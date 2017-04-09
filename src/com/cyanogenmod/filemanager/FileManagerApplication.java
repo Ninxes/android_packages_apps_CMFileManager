@@ -42,6 +42,7 @@ import com.cyanogenmod.filemanager.ui.ThemeManager;
 import com.cyanogenmod.filemanager.ui.ThemeManager.Theme;
 import com.cyanogenmod.filemanager.util.AIDHelper;
 import com.cyanogenmod.filemanager.util.AndroidHelper;
+import com.cyanogenmod.filemanager.util.AppDirNameHelper;
 import com.cyanogenmod.filemanager.util.MimeTypeHelper;
 import com.cyanogenmod.filemanager.util.StorageHelper;
 
@@ -190,6 +191,9 @@ public final class FileManagerApplication extends Application {
             MimeTypeIndexService.indexFileRoot(this, storageVolume.getPath());
         }
 
+
+        AppDirNameHelper appDirNameHelper = new AppDirNameHelper(getApplicationContext());
+        appDirNameHelper.setDirCnNameMap();
 
         // Schedule in case not scheduled (i.e. never booted with this app on device
         SecureCacheCleanupService.scheduleCleanup(getApplicationContext());
